@@ -20,7 +20,7 @@ export class ProductManagementComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'brand', 'description', 'typeProduct', 'quantity', 'minimumPrice', 'maximumPrice', 'vatTax', 'consumptionTax', 'actions'];
 
   dataSource = new MatTableDataSource<Product>();
-  
+  newProduct : Product = {} as Product;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -50,14 +50,15 @@ export class ProductManagementComponent implements AfterViewInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '80%',
-      data: {name: this.name, animal: this.animal}
+      data: this.newProduct
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log(result);
+      this.dataSource.data = [...this.dataSource.data, result];
     });
   }
+
 }
 
 export interface PeriodicElement {

@@ -12,4 +12,7 @@ export class ProductService {
   getAll() {
     return this.http.get<Product[]>('http://localhost:8081/product');
   }
+  create(newProduct : Product){
+    return this.http.post<Product>('http://localhost:8081/product',newProduct);
+  }
 }
