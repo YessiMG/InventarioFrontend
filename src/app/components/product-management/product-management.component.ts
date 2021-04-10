@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
@@ -18,7 +19,7 @@ export class ProductManagementComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['name', 'brand', 'description', 'typeProduct', 'quantity', 'minimumPrice', 'maximumPrice', 'vatTax', 'consumptionTax', 'actions'];
 
-  dataSource = new MatTableDataSource<any[]>();
+  dataSource = new MatTableDataSource<Product>();
   
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,7 +33,7 @@ export class ProductManagementComponent implements AfterViewInit {
 
   async loadData() {
     const data = await this.productService.getAll().toPromise();
-    this.dataSource = new MatTableDataSource<any[]>(data);
+    this.dataSource = new MatTableDataSource<Product>(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
