@@ -1,0 +1,13 @@
+<div class="title">
+  <h1 mat-dialog-title>Editar {{data.name}}</h1>
+</div>
+<div mat-dialog-content>
+  <p>Nombre - {{data.name}}</p>
+  <mat-form-field class="content-wh">
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="action-content">
+  <button mat-flat-button color="warn" (click)="onNoClick()">Cancelar</button>
+  <button mat-flat-button [mat-dialog-close]="data.animal" color="primary">Ok</button>
+</div>

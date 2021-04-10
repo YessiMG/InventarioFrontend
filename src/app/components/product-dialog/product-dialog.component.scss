@@ -1,0 +1,40 @@
+.title {
+    padding: 0;
+    color: #3f51b5;
+    text-align: center;
+    h1{
+        font-weight: bolder;
+    }
+}
+
+.dialog-content{
+    margin-top: 25px;
+    font-size: 16px;
+    .flex-content-init {
+        display: flex;
+        .content-type {
+            width: 80%;
+        }
+        .button-adds {
+            width: 31%;
+            margin-bottom: 20.25px;
+        }
+    }
+    .flex-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .into-flex-content {
+            text-align-last: center;
+            margin: 1em;
+        }
+    }
+    .content-wh {
+        display: inline;
+    }
+}
+
+.action-content {
+    justify-content: center;
+    align-items: center;
+}

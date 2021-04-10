@@ -1,0 +1,36 @@
+.content-general {
+    margin: 16px;
+    .content-init {
+        display: flex;
+        .button-add {
+            width: 180px;
+            margin: 16px;
+            margin-bottom: 1.7em;
+            margin-left: 0;
+        }
+    }
+}
+
+table {
+    width: 100%;
+}
+.mat-form-field {
+    font-size: 20px;
+    width: 100%;
+  }
+  
+td, th {
+    width: 25%;
+}
+
+.button-container {
+    display: flex;
+    text-align: center;
+}
+.header-action {
+    text-align: center;
+}
+
+.mat-header-cell:last-of-type, td.mat-cell:last-of-type {
+    padding: 0%;
+}

@@ -1,0 +1,86 @@
+<div class="content-general">
+
+  <div class="content-init">
+    <button mat-flat-button color="primary" class="button-add" (click)="openDialog()">
+      Agregar Producto
+    </button>
+    <mat-form-field>
+      <mat-label>
+        <mat-icon>search</mat-icon> Buscar
+      </mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ej: Arroz, Kg" #input>
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Marca </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="typeProduct">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de producto </th>
+        <td mat-cell *matCellDef="let element"> {{element.type.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="minimumPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Mínimo </th>
+        <td mat-cell *matCellDef="let element"> {{element.minimumPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maximumPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Máximo </th>
+        <td mat-cell *matCellDef="let element"> {{element.maximumPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vatTax">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> IVA </th>
+        <td mat-cell *matCellDef="let element"> {{element.vatTax}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="consumptionTax">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Impuesto al consumo </th>
+        <td mat-cell *matCellDef="let element"> {{element.consumptionTax}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef class="header-action">Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="button-container">
+            <button mat-icon-button color="primary">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
