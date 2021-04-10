@@ -11,4 +11,5 @@ export interface Product {
     quatity:number;
     type: TypeProduct;
     //brand: Brand;
+    //COMENTARIO
 }
