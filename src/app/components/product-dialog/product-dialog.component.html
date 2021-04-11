@@ -6,9 +6,8 @@
   <div class="flex-content-init">
     <mat-form-field appearance="fill" class="content-type">
         <mat-label>Seleccciona</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+        <mat-select  [(ngModel)]="data.type">
+          <mat-option  *ngFor="let type of typeProducts" [value]="type">{{type.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-flat-button color="primary" class="button-adds" (click)="openDialogTypeProduct()">
@@ -19,9 +18,8 @@
   <div class="flex-content-init">
     <mat-form-field appearance="fill" class="content-type">
         <mat-label>Seleccciona</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+        <mat-select [(ngModel)]="data.brand">
+          <mat-option *ngFor= "let brand of brands" [value]="brand">{{brand.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-flat-button color="primary" class="button-adds" (click)="openDialogBrand()">
@@ -31,45 +29,45 @@
 
   <p>Nombre del producto: </p>
   <mat-form-field appearance="fill" class="content-wh">
-    <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+    <input matInput [(ngModel)]="data.name" placeholder="Escribe aquí" required #howField>
   </mat-form-field>
 
   <p>Descripción del producto: </p>
   <mat-form-field appearance="fill" class="content-wh">
-    <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+    <input matInput [(ngModel)]="data.description" placeholder="Escribe aquí" required #howField>
   </mat-form-field>
 
   <p>Cantidad: </p>
   <mat-form-field appearance="fill" class="content-wh">
-    <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+    <input matInput [(ngModel)]="data.quantity" placeholder="Escribe aquí" required #howField>
   </mat-form-field>
 
   <div class="flex-content">
     <div class="into-flex-content">
       <p>Precio mínimo: </p>
       <mat-form-field appearance="fill" class="content-wh">
-        <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+        <input matInput [(ngModel)]="data.minimumPrice" placeholder="Escribe aquí" required #howField>
         <span matPrefix>$&nbsp;</span>
       </mat-form-field>
     </div>
     <div class="into-flex-content">
       <p>Precio máximo: </p>
       <mat-form-field appearance="fill" class="content-wh">
-        <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+        <input matInput [(ngModel)]="data.maximumPrice" placeholder="Escribe aquí" required #howField>
         <span matPrefix>$&nbsp;</span>
       </mat-form-field>
     </div>
     <div class="into-flex-content">
       <p>IVA: </p>
       <mat-form-field appearance="fill" class="content-wh">
-        <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+        <input matInput [(ngModel)]="data.vatTax" placeholder="Escribe aquí" required #howField>
         <span matSuffix>%</span>
       </mat-form-field>
     </div>
     <div class="into-flex-content">
       <p>Impuesto al consumo: </p>
       <mat-form-field appearance="fill" class="content-wh">
-        <input matInput [(ngModel)]="data.animal" placeholder="Escribe aquí" required #howField>
+        <input matInput [(ngModel)]="data.consumptionTax" placeholder="Escribe aquí" required #howField>
         <span matSuffix>%</span>
       </mat-form-field>
     </div>
@@ -78,5 +76,5 @@
 </div>
 <div mat-dialog-actions class="action-content">
   <button mat-flat-button color="warn" (click)="onNoClick()">Cancelar</button>
-  <button mat-flat-button [mat-dialog-close]="data.animal" color="primary">Ok</button>
+  <button mat-flat-button (click)="save()" color="primary">Ok</button>
 </div>

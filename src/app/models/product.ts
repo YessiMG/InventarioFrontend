@@ -1,14 +1,15 @@
+import { Brand } from "./brand";
 import { TypeProduct } from "./type-product";
 
 export interface Product {
-    id:number;
-    name:string;
-    description:string;
-    minimunPrice:number;
-    maximunPrice:number;
-    vatTax:number;
-    consumptionTax:number;
-    quatity:number;
+    id: number;
+    name: string;
+    description: string;
+    minimumPrice: number;
+    maximumPrice: number;
+    vatTax: number;
+    consumptionTax: number;
+    quantity: number;
     type: TypeProduct;
-    //brand: Brand;
+    brand: Brand;
 }
