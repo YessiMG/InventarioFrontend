@@ -61,9 +61,4 @@ export class ProductManagementComponent implements AfterViewInit {
 
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+

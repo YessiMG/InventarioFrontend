@@ -12,4 +12,8 @@ export class TypeProductService {
   getAll(){
     return this.http.get<TypeProduct[]>('http://localhost:8081/type_product');
   }
+
+  create(newtypeProduct : TypeProduct){
+    return this.http.post<TypeProduct>('http://localhost:8081/type_product', newtypeProduct);
+  }
 }

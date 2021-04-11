@@ -12,4 +12,7 @@ export class BrandService {
   getAll(){
     return this.http.get<Brand[]>('http://localhost:8081/brand');
   }
+  create(newBrand : Brand){
+    return this.http.post<Brand>('http://localhost:8081/brand',newBrand);
+  }
 }
