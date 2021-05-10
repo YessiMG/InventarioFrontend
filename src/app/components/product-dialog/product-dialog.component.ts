@@ -26,6 +26,21 @@ export class ProductDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product, private typeProductService: TypeProductService,
     private brandService: BrandService, private productService: ProductService) {
+      if(data.id == undefined){
+        data.name = "";
+        data.description = "";
+        data.maximumPrice = 0;
+        data.minimumPrice = 0;
+        data.quantity = 0;
+        data.vatTax = 0;
+        data.consumptionTax = 0;
+        data.brand = undefined;
+        data.type = undefined;
+      }
+      if(!data.type) 
+        data.type = {} as TypeProduct;
+      if(!data.brand) 
+        data.brand = {} as Brand;
   }
 
   ngOnInit(): void {
@@ -43,9 +58,22 @@ export class ProductDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   save(): void {
-    this.productService.create(this.data).toPromise().then(result => {
-      this.dialogRef.close(result);
-    });
+    if(this.data?.type?.id)
+      this.data.type = this.typeProducts.find(t=>t.id === this.data.type.id)
+
+    if(this.data?.brand?.id)
+      this.data.brand = this.brands.find(t=>t.id === this.data.brand.id)
+
+    if (this.data.id != undefined) {
+      this.productService.edit(this.data).toPromise().then(result => {
+        this.dialogRef.close();
+      });
+    }
+    else{
+      this.productService.create(this.data).toPromise().then(result => {
+        this.dialogRef.close(result);
+      });
+    }
   }
 
   openDialogTypeProduct(): void {

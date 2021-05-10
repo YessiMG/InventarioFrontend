@@ -9,13 +9,15 @@ import { ProductManagementComponent } from './components/product-management/prod
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { TypeProductDialogComponent } from './components/type-product-dialog/type-product-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductManagementComponent,
     ProductDialogComponent,
-    TypeProductDialogComponent
+    TypeProductDialogComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

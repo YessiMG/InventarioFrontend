@@ -1,13 +1,13 @@
 <div class="title">
-  <h1 mat-dialog-title>Nuevo Producto</h1>
+  <h1 mat-dialog-title>Producto</h1>
 </div>
 <div class="dialog-content" mat-dialog-content>
   <p>Tipo de producto: </p>
-  <div class="flex-content-init">
+  <div class="flex-content-init" *ngIf="typeProducts">
     <mat-form-field appearance="fill" class="content-type">
         <mat-label>Seleccciona</mat-label>
-        <mat-select  [(ngModel)]="data.type">
-          <mat-option  *ngFor="let type of typeProducts" [value]="type">{{type.name}}</mat-option>
+        <mat-select [(ngModel)]="data.type.id">
+          <mat-option *ngFor="let type of typeProducts" [value]="type.id">{{type.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-flat-button color="primary" class="button-adds" (click)="openDialogTypeProduct()">
@@ -17,11 +17,11 @@
   <p>Marca: </p>
   <div class="flex-content-init">
     <mat-form-field appearance="fill" class="content-type">
-        <mat-label>Seleccciona</mat-label>
-        <mat-select [(ngModel)]="data.brand">
-          <mat-option *ngFor= "let brand of brands" [value]="brand">{{brand.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-label>Seleccciona</mat-label>
+      <mat-select [(ngModel)]="data.brand.id">
+        <mat-option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
       <button mat-flat-button color="primary" class="button-adds" (click)="openDialogBrand()">
         Agregar Marca
       </button>
@@ -35,11 +35,6 @@
   <p>Descripción del producto: </p>
   <mat-form-field appearance="fill" class="content-wh">
     <input matInput [(ngModel)]="data.description" placeholder="Escribe aquí" required #howField>
-  </mat-form-field>
-
-  <p>Cantidad: </p>
-  <mat-form-field appearance="fill" class="content-wh">
-    <input matInput [(ngModel)]="data.quantity" placeholder="Escribe aquí" required #howField>
   </mat-form-field>
 
   <div class="flex-content">
