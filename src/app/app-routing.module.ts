@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MovementManagementComponent } from './components/movement-management/movement-management.component';
+import { ProductManagementComponent } from './components/product-management/product-management.component';
 
-const routes: Routes = [];
+export const routes: Routes = [
+  { path: 'products', component: ProductManagementComponent },
+  { path: 'movement/:id', component: MovementManagementComponent },
+  { path: '', component: ProductManagementComponent, pathMatch: 'full' },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+
+export class AppRoutingModule{ };

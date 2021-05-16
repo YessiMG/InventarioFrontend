@@ -10,6 +10,7 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 import { TypeProductDialogComponent } from './components/type-product-dialog/type-product-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MovementManagementComponent } from './components/movement-management/movement-management.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ProductManagementComponent,
     ProductDialogComponent,
     TypeProductDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MovementManagementComponent
   ],
   imports: [
     BrowserModule,

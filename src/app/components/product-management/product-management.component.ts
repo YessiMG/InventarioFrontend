@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -15,9 +16,6 @@ import { ProductDialogComponent } from '../product-dialog/product-dialog.compone
 })
 export class ProductManagementComponent implements AfterViewInit {
 
-  animal: string;
-  name: string;
-
   displayedColumns: string[] = ['name', 'brand', 'description', 'typeProduct', 'quantity', 'minimumPrice', 'maximumPrice', 'vatTax', 'consumptionTax', 'actions'];
 
   dataSource = new MatTableDataSource<Product>();
@@ -26,7 +24,7 @@ export class ProductManagementComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor (public dialog: MatDialog, private productService: ProductService) {}
+  constructor (public dialog: MatDialog, private productService: ProductService, private router:Router) {}
 
   ngAfterViewInit() {
     this.loadData();
@@ -96,6 +94,11 @@ export class ProductManagementComponent implements AfterViewInit {
         });
       }
     });
+  }
+
+  openMovement (idProduct) {
+    console.log(idProduct)
+    this.router.navigate( ['/movement', idProduct] );
   }
 
 }
