@@ -1,0 +1,75 @@
+<p>Tipo de Movimiento</p>
+<mat-form-field appearance="fill" class="content-type">
+    <mat-label>Seleccciona</mat-label>
+    <mat-select [(ngModel)]="typeMovement.id" (ngModelChange)="onChangeTypeMovement($event)">
+      <mat-option *ngFor="let type of typeMovements" [value]="type.id">{{type.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<ng-container *ngIf="typeMovement.id">
+  <p>{{typePersonName | titlecase}}</p>
+  <mat-form-field appearance="fill" class="content-type">
+    <mat-label>Seleccciona</mat-label>
+    <mat-select [(ngModel)]="person.id" (ngModelChange)="onChangePerson()">
+      <mat-option *ngFor="let person of peopleByTypePerson" [value]="person.id">{{person.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+  <p>{{typeDocumentName | titlecase}}: </p>
+  <mat-form-field appearance="fill" class="content-wh">
+    <input matInput [(ngModel)]="document.description" placeholder="Escribe aquí" required>
+  </mat-form-field>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Producto</th>
+      <th>Almacen</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movement of movements; index as i">
+      <td>{{i + 1}}</td>
+      <td>
+        <mat-select [(ngModel)]="movement.product.id" class="cell-product">
+          <mat-option *ngFor="let product of products" [value]="product.id">
+            {{product.name}} {{product.brand.name}}
+          </mat-option>
+        </mat-select>
+      </td>
+      <td>
+        <mat-select [(ngModel)]="movement.warehouse.id" class="cell-warehouse">
+          <mat-option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
+            {{warehouse.name}}
+          </mat-option>
+        </mat-select>
+      </td>
+      <td>
+        <input type="number" class="cell-value" min="0" [(ngModel)] = "movement.value" />
+      </td>
+      <td>
+        <input type="number" class="cell-quantity" min="0" [(ngModel)] = "movement.quantity" />
+      </td>
+      <td>
+        <button mat-flat-button (click)="removeMovementByIndex(i)"><mat-icon color="warn">delete</mat-icon></button>
+      </td>   
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">Total</td>
+      <td>{{total}}</td>
+    </tr>
+  </tfoot>
+</table>
+<button mat-flat-button (click)="addMovement()">
+  <mat-icon color="primary">add_circle</mat-icon>
+</button>
+<div mat-dialog-actions class="action-content">
+  <button mat-flat-button color="primary" (click)="save()" *ngIf="isValidSave">Guardar</button>
+</div>
+</ng-container>

@@ -12,4 +12,7 @@ export class DocumentService {
   getAll(){
     return this.http.get<Document[]>('http://localhost:8081/document');
   }
+  create(newDocument : Document){
+    return this.http.post<Document>('http://localhost:8081/document',newDocument);
+  }
 }

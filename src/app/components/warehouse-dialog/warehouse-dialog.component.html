@@ -1,0 +1,14 @@
+<div class="title" >
+    <h1 mat-dialog-title *ngIf = "data.id">Editar almacén</h1>
+    <h1 mat-dialog-title *ngIf = "!data.id">Añadir almacén</h1>
+  </div>
+  <div mat-dialog-content>
+    <p>Nombre</p>
+    <mat-form-field class="content-wh">
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="action-content">
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancelar</button>
+    <button mat-flat-button (click)="save(data.flag)" color="primary">Ok</button>
+  </div>

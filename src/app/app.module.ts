@@ -11,6 +11,10 @@ import { TypeProductDialogComponent } from './components/type-product-dialog/typ
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MovementManagementComponent } from './components/movement-management/movement-management.component';
+import { MovementDialogComponent } from './components/movement-dialog/movement-dialog.component';
+import { WarehouseManagementComponent } from './components/warehouse-management/warehouse-management.component';
+import { WarehouseDialogComponent } from './components/warehouse-dialog/warehouse-dialog.component';
+import { ListProductDialogComponent } from './components/list-product-dialog/list-product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { MovementManagementComponent } from './components/movement-management/mo
     ProductDialogComponent,
     TypeProductDialogComponent,
     ConfirmationDialogComponent,
-    MovementManagementComponent
+    MovementManagementComponent,
+    MovementDialogComponent,
+    WarehouseManagementComponent,
+    WarehouseDialogComponent,
+    ListProductDialogComponent
   ],
   imports: [
     BrowserModule,

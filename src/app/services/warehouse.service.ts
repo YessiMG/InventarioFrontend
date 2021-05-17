@@ -12,4 +12,16 @@ export class WarehouseService {
   getAll(){
     return this.http.get<Warehouse[]>('http://localhost:8081/warehouse');
   }
+
+  create(newWarehouse : Warehouse){
+    return this.http.post<Warehouse>('http://localhost:8081/warehouse',newWarehouse);
+  }
+
+  edit(warehouse: Warehouse){
+    return this.http.put<Warehouse>("http://localhost:8081/warehouse",warehouse);
+  }
+
+  delete(warehouse: Warehouse){
+    return this.http.request('delete', "http://localhost:8081/warehouse", {body: warehouse});
+  }
 }

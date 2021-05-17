@@ -1,6 +1,13 @@
 <div class="content-general">
 
-  <h1>Movimientos de {{product.name}}</h1>
+  <h1 *ngIf="product.id">Movimientos de {{product.name}}</h1>
+  <h1 *ngIf="!product.id">Movimientos</h1>
+
+  <div class="content-init">
+    <button mat-flat-button color="primary" class="button-add" (click)="openDialogCreate()">
+      Agregar Movimiento
+    </button>
+  </div>
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>

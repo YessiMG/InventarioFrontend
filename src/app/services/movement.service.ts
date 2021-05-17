@@ -12,4 +12,7 @@ export class MovementService {
   getAll(){
     return this.http.get<Movement[]>('http://localhost:8081/movement');
   }
+  create(newMovement : Movement){
+    return this.http.post<Movement>('http://localhost:8081/movement',newMovement);
+  }
 }

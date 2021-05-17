@@ -26,4 +26,7 @@ export class ProductService {
   delete(product: Product){
     return this.http.request('delete', "http://localhost:8081/product", {body: product});
   }
+  getByWarehouse(idWarehouse: number){
+    return this.http.get<Product[]>(`http://localhost:8081/product/warehouse/${idWarehouse}`);
+  }
 }
