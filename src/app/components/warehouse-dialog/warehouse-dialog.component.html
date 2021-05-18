@@ -10,5 +10,5 @@
   </div>
   <div mat-dialog-actions class="action-content">
     <button mat-flat-button color="warn" (click)="onNoClick()">Cancelar</button>
-    <button mat-flat-button (click)="save(data.flag)" color="primary">Ok</button>
+    <button mat-flat-button (click)="save(data.flag)" color="primary" [mat-dialog-close]="true">Ok</button>
   </div>

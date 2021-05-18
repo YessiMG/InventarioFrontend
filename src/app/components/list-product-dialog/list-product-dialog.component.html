@@ -2,13 +2,17 @@
     <thead>
         <tr>
             <th>Producto</th>
-            <th>Cantidad</th>
+            <th>Entradas</th>
+            <th>Salidas</th>
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products">
-            <td>{{product.name}} {{product.brand.name}} {{product.description}}</td>
-            <td>{{product.quantity}}</td>
+        <tr *ngFor="let product of productQuantities">
+            <td>{{product.name}}</td>
+            <td>{{product.input}}</td>
+            <td>{{product.output}}</td>
+            <td>{{product.input - product.output}}</td>
         </tr>
     </tbody>
 </table>

@@ -18,7 +18,7 @@ import { MovementDialogComponent } from '../movement-dialog/movement-dialog.comp
 })
 export class MovementManagementComponent implements OnInit {
 
-  displayedColumns: string[] = ['idDoc', 'dateDoc', 'nameMovement', 'quantityMovement', 'valueMovement', 'person'];
+  displayedColumns: string[] = ['idDoc', 'dateDoc', 'nameMovement', 'product', 'warehouse', 'quantityMovement', 'valueMovement', 'person'];
 
   dataSource = new MatTableDataSource<Movement>();
   movement: Movement[];
@@ -61,9 +61,8 @@ export class MovementManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result != undefined){
-        this.dataSource.data = [...this.dataSource.data, result];
+        this.dataSource.data = this.dataSource.data.concat(result);
       }
     });
   }

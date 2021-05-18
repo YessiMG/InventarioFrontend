@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
+import { ProductQuantity } from '../models/product-quantity';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,6 @@ export class ProductService {
     return this.http.request('delete', "http://localhost:8081/product", {body: product});
   }
   getByWarehouse(idWarehouse: number){
-    return this.http.get<Product[]>(`http://localhost:8081/product/warehouse/${idWarehouse}`);
+    return this.http.get<ProductQuantity[]>(`http://localhost:8081/product/warehouse/${idWarehouse}`);
   }
 }

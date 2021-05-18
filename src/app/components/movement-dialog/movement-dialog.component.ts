@@ -104,11 +104,16 @@ export class MovementDialogComponent implements OnInit {
   async save() {
     if (!this.isValidSave) return;
     this.document = await this.documentService.create(this.document).toPromise();
-    this.movements.map(async (m, index)=>{
+    this.document.person = this.people.find(p=>p.id === this.person.id);
+    await this.movements.forEach(async (m)=>{
         m.document = this.document
-        m = await this.movementService.create(m).toPromise();
-        this.movements[index] = m;
+        const movement = await this.movementService.create(m).toPromise();
+        m.id = movement.id;
+        m.product = this.products.find(p => p.id === m.product.id);
+        m.warehouse = this.warehouses.find(w => w.id === m.warehouse.id);
+        return m;
     });
+    this.dialogRef.close(this.movements);
   }
 
   get isValidSave(): boolean {
@@ -116,11 +121,10 @@ export class MovementDialogComponent implements OnInit {
       return false;
     if (!this.document.person)
       return false;
-    if (!this.movements && this.movements.length > 0) return false;
+    if (!this.movements || this.movements.length == 0) return false;
     return this.movements.reduce((acc, obj) =>
-    acc && (
-      obj.product.id && obj.warehouse.id && obj.value > 0 && obj.quantity > 0
-    ), true);
+    acc &&
+      (obj.product.id && obj.warehouse.id && obj.value > 0 && obj.quantity > 0), true);
   }
 
   get total() {
