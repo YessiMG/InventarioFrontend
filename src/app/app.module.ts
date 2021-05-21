@@ -15,6 +15,7 @@ import { MovementDialogComponent } from './components/movement-dialog/movement-d
 import { WarehouseManagementComponent } from './components/warehouse-management/warehouse-management.component';
 import { WarehouseDialogComponent } from './components/warehouse-dialog/warehouse-dialog.component';
 import { ListProductDialogComponent } from './components/list-product-dialog/list-product-dialog.component';
+import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListProductDialogComponent } from './components/list-product-dialog/lis
     MovementDialogComponent,
     WarehouseManagementComponent,
     WarehouseDialogComponent,
-    ListProductDialogComponent
+    ListProductDialogComponent,
+    HomeMenuComponent
   ],
   imports: [
     BrowserModule,
