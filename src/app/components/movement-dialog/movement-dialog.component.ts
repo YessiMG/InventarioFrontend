@@ -113,6 +113,7 @@ export class MovementDialogComponent implements OnInit {
         m.warehouse = this.warehouses.find(w => w.id === m.warehouse.id);
         return m;
     });
+    //console.log(this.movements);
     this.dialogRef.close(this.movements);
   }
 

@@ -37,7 +37,7 @@
       <td>
         <mat-select [(ngModel)]="movement.product.id" class="cell-product">
           <mat-option *ngFor="let product of products" [value]="product.id">
-            {{product.name}} {{product.brand.name}}
+            {{product.name}} {{product.brand.name}} {{product.description}}
           </mat-option>
         </mat-select>
       </td>
