@@ -56,7 +56,7 @@ export class MovementDialogComponent implements OnInit {
   }
 
   onChangeTypeMovement(idTypeMovement) {
-    this.typeMovement = this.typeMovements.find(t=>t.id == idTypeMovement);
+    this.typeMovement = {...this.typeMovements.find(t=>t.id === idTypeMovement)};
     this.typeDocumentName = this.typeMovement.typeDocument.name;
     this.typePersonName = this.typeMovement.typeDocument.typePerson.toString();
     this.document = {
@@ -103,6 +103,16 @@ export class MovementDialogComponent implements OnInit {
 
   async save() {
     if (!this.isValidSave) return;
+    if (!this.typeMovement.isInput) {
+      const isQuantityValidate = await this.validateQuantity();
+      if (!isQuantityValidate.isValid) {
+        const contentModal = isQuantityValidate.movements.reduce((acc, obj)=>
+          (acc + (obj.isValid? "" : this.findProductByName(obj.movement.product.id) + ": " + obj.quantityActual + "\n")), 
+          "No hay existencias suficientes de los siguientes productos:\n");
+        alert(contentModal);
+        return;
+      }
+    }
     this.document = await this.documentService.create(this.document).toPromise();
     this.document.person = this.people.find(p=>p.id === this.person.id);
     await this.movements.forEach(async (m)=>{
@@ -113,8 +123,35 @@ export class MovementDialogComponent implements OnInit {
         m.warehouse = this.warehouses.find(w => w.id === m.warehouse.id);
         return m;
     });
-    //console.log(this.movements);
     this.dialogRef.close(this.movements);
+  }
+
+  findProductByName(idProduct: number):string {
+    return this.products.find(p=> p.id === idProduct).name;
+  }
+
+  async validateQuantity() {
+    const movementsValidation= await this.getMovementValidation();
+    return movementsValidation.reduce((acc, obj)=>
+      ({
+        isValid: acc.isValid && obj.isValid,
+        movements: [...acc.movements, obj]
+      }), {isValid: true, movements: []});
+  }
+
+  async getMovementValidation() {
+    let movementValidation = [];
+    for (let m of this.movements) {
+      const response = 
+        await this.movementService.getQuantityByProductAndWarehouse(m.product.id, m.warehouse.id).toPromise();
+      movementValidation = [...movementValidation, 
+        {
+        movement: m,
+        quantityActual: response.quantity,
+        isValid: m.quantity < response.quantity
+        }];
+    }
+    return movementValidation;
   }
 
   get isValidSave(): boolean {
