@@ -18,7 +18,7 @@ import { TypeProductDialogComponent } from '../type-product-dialog/type-product-
 
 export class ProductDialogComponent implements OnInit {
 
-  animal: string;
+  copy: Product;
   typeProducts: TypeProduct[] = [];
   brands: Brand[] = [];
 
@@ -45,6 +45,8 @@ export class ProductDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.copy = {...this.data};
+    console.log(this.data);
   }
 
   async loadData() {
@@ -55,7 +57,7 @@ export class ProductDialogComponent implements OnInit {
 
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.copy);
   }
   save(): void {
     if(this.data?.type?.id)
@@ -66,7 +68,7 @@ export class ProductDialogComponent implements OnInit {
 
     if (this.data.id != undefined) {
       this.productService.edit(this.data).toPromise().then(result => {
-        this.dialogRef.close();
+        this.dialogRef.close(result);
       });
     }
     else{

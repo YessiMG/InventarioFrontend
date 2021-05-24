@@ -16,6 +16,7 @@ import { WarehouseManagementComponent } from './components/warehouse-management/
 import { WarehouseDialogComponent } from './components/warehouse-dialog/warehouse-dialog.component';
 import { ListProductDialogComponent } from './components/list-product-dialog/list-product-dialog.component';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
+import { PowerBiViewComponent } from './components/power-bi-view/power-bi-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeMenuComponent } from './components/home-menu/home-menu.component';
     WarehouseManagementComponent,
     WarehouseDialogComponent,
     ListProductDialogComponent,
-    HomeMenuComponent
+    HomeMenuComponent,
+    PowerBiViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,20 @@
-<table>
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Entradas</th>
-            <th>Salidas</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of productQuantities">
-            <td>{{product.name}}</td>
-            <td>{{product.input}}</td>
-            <td>{{product.output}}</td>
-            <td>{{product.input - product.output}}</td>
-        </tr>
-    </tbody>
-</table>
+<mat-dialog-content class="mat-typography">
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Entradas</th>
+                <th>Salidas</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productQuantities">
+                <td>{{product.name}}</td>
+                <td>{{product.input}}</td>
+                <td>{{product.output}}</td>
+                <td>{{product.input - product.output}}</td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>

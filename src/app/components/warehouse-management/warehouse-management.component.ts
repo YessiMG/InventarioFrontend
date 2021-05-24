@@ -55,9 +55,18 @@ export class WarehouseManagementComponent implements OnInit {
   }
 
   openDialogEdit(element){
+    const copy = {...element};
     const dialogRef = this.dialog.open(WarehouseDialogComponent, {
       width: '80%',
       data: element
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.dataSource.data = this.dataSource.data.map(d=> d.id === result.id? result : d);
+      } else {
+        this.dataSource.data = this.dataSource.data.map(d=> d.id === copy.id? copy : d);
+      }
     });
   }
 

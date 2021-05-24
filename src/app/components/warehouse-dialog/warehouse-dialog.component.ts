@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Warehouse } from 'src/app/models/warehouse';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 
 @Component({
@@ -9,15 +10,19 @@ import { WarehouseService } from 'src/app/services/warehouse.service';
 })
 export class WarehouseDialogComponent implements OnInit {
   
+  copy: Warehouse;
+
   constructor(
     public dialogRef: MatDialogRef<WarehouseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data : any, private warehouseService: WarehouseService) { }
+    @Inject(MAT_DIALOG_DATA) public data : any, private warehouseService: WarehouseService) { 
+      this.copy = {...data};
+    }
 
   ngOnInit(): void {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.copy);
   }
 
   save(flag: number): void {

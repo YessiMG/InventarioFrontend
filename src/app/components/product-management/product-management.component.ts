@@ -61,6 +61,8 @@ export class ProductManagementComponent implements AfterViewInit {
   }
 
   openDialogEdit(product): void {
+    const copy = {...product};
+    console.log(product);
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '80%',
       data: product
@@ -68,13 +70,18 @@ export class ProductManagementComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      if(result) {
+      if(result != undefined){
+        console.log("entre");
+        this.dataSource.data = this.dataSource.data.map(d=> d.id === result.id? result : d);
+        product.id = result.id;
+      } else {
+        this.dataSource.data = this.dataSource.data.map(d=> d.id === copy.id? copy : d);
         this.dataSource.data.forEach(item =>{
-          if(item.id == result.id){
-            item.brand = result.brand;
-            item.type = result.type;
+          if(item.id == copy.id){
+            item.brand.name = copy.brand.name;
+            item.type.name = copy.type.name;
           }
-        });
+        }); 
       }
     });
   }

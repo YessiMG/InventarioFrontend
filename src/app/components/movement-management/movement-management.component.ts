@@ -18,7 +18,7 @@ import { MovementDialogComponent } from '../movement-dialog/movement-dialog.comp
 })
 export class MovementManagementComponent implements OnInit {
 
-  displayedColumns: string[] = ['idDoc', 'dateDoc', 'nameMovement', 'product', 'warehouse', 'quantityMovement', 'valueMovement', 'person'];
+  displayedColumns: string[] = ['idDoc', 'descriptionDoc', 'dateDoc', 'nameMovement', 'product', 'warehouse', 'quantityMovement', 'valueMovement', 'person'];
 
   dataSource = new MatTableDataSource<Movement>();
   movement: Movement[];

@@ -19,6 +19,11 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID-Doc </th>
           <td mat-cell *matCellDef="let element"> {{element.document.id}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="descriptionDoc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID-Doc </th>
+          <td mat-cell *matCellDef="let element"> {{element.document.description}} </td>
+        </ng-container>
   
         <ng-container matColumnDef="dateDoc">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>

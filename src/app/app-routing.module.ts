@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { MovementManagementComponent } from './components/movement-management/movement-management.component';
+import { PowerBiViewComponent } from './components/power-bi-view/power-bi-view.component';
 import { ProductManagementComponent } from './components/product-management/product-management.component';
 import { WarehouseManagementComponent } from './components/warehouse-management/warehouse-management.component';
 
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'movement/:id', component: MovementManagementComponent },
   { path: 'movement', component: MovementManagementComponent },
   { path: 'warehouse', component: WarehouseManagementComponent },
+  { path: 'power-bi', component: PowerBiViewComponent },
   { path: '', component: HomeMenuComponent, pathMatch: 'full' },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
