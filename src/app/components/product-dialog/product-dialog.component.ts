@@ -57,7 +57,10 @@ export class ProductDialogComponent implements OnInit {
 
 
   onNoClick(): void {
-    this.dialogRef.close(this.copy);
+    if(this.copy.id != undefined){
+      this.dialogRef.close(this.copy);
+    }
+    this.dialogRef.close();
   }
   save(): void {
     if(this.data?.type?.id)

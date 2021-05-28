@@ -22,7 +22,10 @@ export class WarehouseDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close(this.copy);
+    if(this.copy.id != undefined){
+      this.dialogRef.close(this.copy);
+    }
+    this.dialogRef.close();
   }
 
   save(flag: number): void {
